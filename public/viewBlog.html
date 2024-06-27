@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <title>Mela Fintech || Media</title>
+</head>
+<body>
+
+
+    <header>
+        <div class="nav">
+            <a href="index.html" class="nav-logo">
+                <h1>Mela Fintech</h1>
+                <p>A simpler way to finance!</p>
+            </a>
+
+            <div class="nav-links">
+                <a href="about.html">About</a>
+                <a href="media.html">Media</a>
+                <a href="careers.html">Careers</a>
+                <a href="contact.html">Contact</a>
+                <a href="faq.html">FAQ</a>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="media-title">
+            <div class="media-title-l">
+                <h1>Media</h1>
+            </div>
+            <div class="media-title-r">
+                <p>The place where we post everything about Mela Fintech. Stay updated with our news!</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog">
+        
+    </section>
+    
+    <footer>
+        <div class="footer">
+            <div class="footer-l">
+                <h1>Mela Fintech</h1>
+                <p><i>A simpler way to finance!</i></p>
+                <br>
+                <p>Bole-2354 Addis Ababa, Ethiopia</p>
+            </div>
+            <div class="footer-r">
+                <div class="footer-r-row">
+                    <h2>Main Menu</h2>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="faq.html">FAQ</a>
+                </div>
+                <div class="footer-r-row">
+                    <h2>Company</h2>
+                    <a href="/">The Company</a>
+                    <a href="/">Careers</a>
+                    <a href="/">Press</a>
+                </div>
+                <div class="footer-r-row">
+                    <h2>Discover</h2>
+                    <a href="/">The Team</a>
+                    <a href="/">Our History</a>
+                    <a href="/">Brand Motto</a>
+                </div>
+                <div class="footer-r-row">
+                    <h2>Find us on</h2>
+                    <a href="/">Facebook</a>
+                    <a href="/">Twitter</a>
+                    <a href="/">Instagram</a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const blog = document.getElementById('blog');
+        // get the id query parameter from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+
+        fetch(`/blogs/${id}`)
+            .then(response => response.json())
+            .then(data => {
+                    blog.innerHTML = `
+                        <div style="width: 100%; padding: 50px; display: flex; flex-direction: column; gap: 30px;">
+                            <div style="width: 100%; height: 500px;">
+                                <img style="width: 100%; height: 100%; object-fit: cover;" src="${data.image}" alt="Article Image">
+                            </div>
+                            <div class="media-article-l">
+                                <h2>${data.title}</h2>
+                                <p>${data.content}</p>
+                            </div>
+                        </div>
+                    `;
+            });
+    </script>
+    
+</body>
+</html>
